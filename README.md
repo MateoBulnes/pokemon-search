@@ -1,7 +1,7 @@
 # 🕵️‍♂️ Buscador de Pokémon
 
 ## 📌 Descripción
-Esta es una aplicación web que permite buscar Pokémon por nombre parcial utilizando la API de [PokeAPI](https://pokeapi.co/). 
+Aplicación web que permite buscar Pokémon por nombre parcial utilizando la API de [PokeAPI](https://pokeapi.co/). 
 El proyecto está desarrollado con **React.js** para el frontend y **Laravel** para el backend, y se ejecuta en contenedores Docker para facilitar su despliegue.
 
 ---
@@ -35,7 +35,6 @@ php artisan migrate --seed
 ### 🔹 **3. Configurar el frontend (React.js)**
 ```sh
 cd ../frontend
-cp .env.example .env
 npm install
 ```
 
@@ -62,14 +61,6 @@ Para detener los contenedores:
 docker-compose down
 ```
 
----
-
-## 🛠 Tecnologías utilizadas
-- **Frontend**: React.js + Vite
-- **Backend**: Laravel 10
-- **Base de Datos**: SQLite
-- **Docker**: Para la contenedorización
-- **PokeAPI**: API de Pokémon
 
 ---
 
@@ -84,7 +75,4 @@ docker-compose down
   docker-compose down --volumes --rmi all
   ```
 
----
 
-## 📄 Licencia
-Este proyecto está bajo la licencia MIT. ¡Siéntete libre de contribuir y mejorar! 🎉
