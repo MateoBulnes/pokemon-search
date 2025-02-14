@@ -1,8 +1,6 @@
 import './App.css';
 import { Container, Divider } from "@mui/material";
 import SiteHeader from './components/SiteHeader';
-import PokemonSearchBar from './components/SearchBar';
-import PokemonResults from './components/PokemonResults';
 import SiteFooter from './components/SiteFooter';
 import PokemonSearch from './components/PokemonSearch';
 

@@ -1,41 +1,11 @@
-import { useState, useCallback } from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import useSearch from "../hooks/useSearch";
 
 
-const SearchBar = ({ pokemons, setPokemons, setIsLoading, setNotFound }) => {
+const SearchBar = ({ setPokemons, setIsLoading, setNotFound }) => {
 
-    const [search, setSearch] = useState('');
-
-
-    const handleSearch = async () => {
-        pokemons.length > 0 && setPokemons([]);
-        setNotFound(false);
-        
-        if (search.trim() === "") {
-            setPokemons([]); 
-            return;
-        }
-
-        setIsLoading(true);
-        await fetch(`http://localhost:8000/api/pokemon?search=${search}`)
-            .then((res) => res.json())
-            .then((data) => {
-                data.length <= 0 && setNotFound(true);
-                setPokemons(data);
-                setIsLoading(false);
-            })
-            .catch(() => {
-                setPokemons([]);
-                setIsLoading(false);
-            });
-    };
-
-    const handleDeleteSearch = () => {
-        setPokemons([]);
-        setSearch('');
-        setNotFound(false);
-    }
+    const { search, setSearch, handleSearch, handleDeleteSearch } = useSearch(setPokemons, setIsLoading, setNotFound);
 
     return (
         <Box sx={{display: 'flex', gap: '20px'}}>

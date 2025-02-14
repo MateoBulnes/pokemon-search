@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, List, ListItem } from "@mui/material";
+import { Box, Typography, List } from "@mui/material";
 
 
 const PokemonDetailList = ({ height, weight, types, abilities }) => {

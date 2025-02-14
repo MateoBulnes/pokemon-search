@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box } from "@mui/material";
 import SearchBar from "./SearchBar";
 import PokemonResults from "./PokemonResults";
 import Loader from "./Loader";
@@ -13,7 +13,7 @@ const PokemonSearch = () => {
     return (
         <Box>
             {isLoading && (<Loader />)}
-            <SearchBar  pokemons={pokemons} setPokemons={setPokemons} setIsLoading={setIsLoading} setNotFound={setNotFound}/>
+            <SearchBar  setPokemons={setPokemons} setIsLoading={setIsLoading} setNotFound={setNotFound}/>
             <PokemonResults pokemons={pokemons} isLoading={isLoading} notFound={notFound}/>
         </Box>
     )
