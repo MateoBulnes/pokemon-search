@@ -8,12 +8,13 @@ const PokemonSearch = () => {
 
     const [pokemons, setPokemons] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [notFound, setNotFound] = useState(false);
 
     return (
         <Box>
             {isLoading && (<Loader />)}
-            <SearchBar setPokemons={setPokemons} setIsLoading={setIsLoading}/>
-            <PokemonResults pokemons={pokemons}/>
+            <SearchBar  pokemons={pokemons} setPokemons={setPokemons} setIsLoading={setIsLoading} setNotFound={setNotFound}/>
+            <PokemonResults pokemons={pokemons} isLoading={isLoading} notFound={notFound}/>
         </Box>
     )
 }

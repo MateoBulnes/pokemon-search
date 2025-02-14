@@ -1,15 +1,19 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
 import { useState, useCallback } from "react";
+import { Box, Typography, TextField, Button } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const SearchBar = ({ setPokemons, setIsLoading }) => {
+
+const SearchBar = ({ pokemons, setPokemons, setIsLoading, setNotFound }) => {
 
     const [search, setSearch] = useState('');
 
 
     const handleSearch = async () => {
-        console.log('buscandooo')
+        pokemons.length > 0 && setPokemons([]);
+        setNotFound(false);
+        
         if (search.trim() === "") {
-            setPokemons([]); // Si el input está vacío, limpiar resultados
+            setPokemons([]); 
             return;
         }
 
@@ -17,6 +21,7 @@ const SearchBar = ({ setPokemons, setIsLoading }) => {
         await fetch(`http://localhost:8000/api/pokemon?search=${search}`)
             .then((res) => res.json())
             .then((data) => {
+                data.length <= 0 && setNotFound(true);
                 setPokemons(data);
                 setIsLoading(false);
             })
@@ -25,6 +30,12 @@ const SearchBar = ({ setPokemons, setIsLoading }) => {
                 setIsLoading(false);
             });
     };
+
+    const handleDeleteSearch = () => {
+        setPokemons([]);
+        setSearch('');
+        setNotFound(false);
+    }
 
     return (
         <Box sx={{display: 'flex', gap: '20px'}}>
@@ -41,13 +52,24 @@ const SearchBar = ({ setPokemons, setIsLoading }) => {
             <Button 
                 onClick={handleSearch}
                 sx={{
-                  width: '20%', 
+                  width: '10%', 
                   textTransform: 'none',
                   backgroundColor: '#00B3EC',
-                  color: '#FFFFFF'
+                  color: '#FFFFFF',
+                  fontSize: '16px',
+                  '&:hover':{
+                    backgroundColor: '#04c2ff'
+                  }
                 }}
             >
                 Buscar
+            </Button>
+
+            <Button 
+                sx={{backgroundColor: '#ec4a4a', '&:hover': {backgroundColor: '#ff5656'} }}
+                onClick={handleDeleteSearch}
+            >
+                <DeleteIcon sx={{color: '#FFFFFF', fontSize: '30px'}}/>
             </Button>
         </Box>
     )
