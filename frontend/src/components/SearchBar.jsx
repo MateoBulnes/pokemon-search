@@ -66,6 +66,7 @@ const SearchBar = ({ pokemons, setPokemons, setIsLoading, setNotFound }) => {
             </Button>
 
             <Button 
+                aria-label="Eliminar búsqueda" 
                 sx={{backgroundColor: '#ec4a4a', '&:hover': {backgroundColor: '#ff5656'} }}
                 onClick={handleDeleteSearch}
             >
